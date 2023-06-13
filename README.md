@@ -13,3 +13,4 @@ Planned features:
 Move the tardis to different locations
 Proper fading effect
 Game balance maybe
+Config for who can enter tardis (Maybe a door locking system so its a viable escape from scps!)
