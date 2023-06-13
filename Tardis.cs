@@ -13,6 +13,7 @@ using Exiled.API.Features.Roles;
 
 using AdminToys;
 using Exiled.API.Features.Toys;
+using System.Runtime.InteropServices;
 
 namespace TardisPlugin
 {
@@ -25,7 +26,7 @@ namespace TardisPlugin
         Primitive shipInterior_Door;
 
         Vector3 TardisInteriorPosition;
-
+        Vector3 TardisInteriorSpawnPosition;
         Primitive policeBox_Cube2;
         Primitive policeBox_Cube23;
         Primitive policeBox_Cube3;
@@ -184,13 +185,27 @@ namespace TardisPlugin
 
 
             TardisInteriorPosition = new Vector3(39.24f, 1014.11f, -32.23f);
-
+            TardisInteriorSpawnPosition = new Vector3(41.05f, 1014.11f, -32.27f);
             shipInterior_Door = Primitive.Create(PrimitiveType.Cube);
             shipInterior_Door.Color = Color.black;
             shipInterior_Door.Scale = new Vector3(0.2f, 4f, 1f);
             shipInterior_Door.Position = new Vector3(42.50f, 1014.11f, -32.168f);
             shipInterior_Door.Collidable = false;
             shipInterior_Door.Spawn();
+
+            Primitive ConsoleTube = Primitive.Create(PrimitiveType.Cylinder);
+            ConsoleTube.Color = Color.red;
+            ConsoleTube.Scale = new Vector3(0.6f, 6f, 0.6f);
+            ConsoleTube.Position = TardisInteriorPosition;
+            ConsoleTube.Collidable = true;
+            ConsoleTube.Spawn();
+
+            Primitive ConsoleBase = Primitive.Create(PrimitiveType.Cube);
+            ConsoleBase.Color = Color.white;
+            ConsoleBase.Position = TardisInteriorPosition;
+            ConsoleBase.Scale = new Vector3(1f,2f,1f);
+            ConsoleBase.Collidable = true;
+            ConsoleBase.Spawn();
 
         }
 
@@ -323,7 +338,7 @@ namespace TardisPlugin
                     if (Vector3.Distance(pl.Position, ExtDoorPos) < radius)
                     {
                         Log.Info("Sent inside tardis");
-                        pl.Teleport(TardisInteriorPosition);
+                        pl.Teleport(TardisInteriorSpawnPosition);
                         continue;
                     }
                     if (Vector3.Distance(pl.Position, IntDoorPos) < radius)
