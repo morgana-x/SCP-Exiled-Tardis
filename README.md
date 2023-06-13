@@ -7,4 +7,9 @@ Exiled plugin that adds the tardis from doctor who
 
 Work in progress, for exiled 7.0.0
 
-Currently can only exit and reenter the tardis with very basic stuff
+Currently can only exit and reenter the tardis with very basic stuff, interior is just one of those towers admins use currently
+
+Planned features:
+Move the tardis to different locations
+Proper fading effect
+Game balance maybe
