@@ -9,6 +9,8 @@ Work in progress, for exiled 7.0.0
 
 Currently can only exit and reenter the tardis with very basic stuff, interior is just one of those towers admins use currently
 
+All players will also teleport to the tardis on spawn for debug purposes, this is not meant to actually be used on a server yet
+
 Planned features:
 Move the tardis to different locations
 Proper fading effect
