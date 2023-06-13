@@ -4,3 +4,5 @@ Exiled plugin that adds the tardis from doctor who
 
 
 Work in progress, for exiled 7.0.0
+
+Currently can only exit and reenter the tardis with very basic stuff
