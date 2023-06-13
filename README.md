@@ -1,5 +1,6 @@
 # SCP-Exiled-Tardis
-![tardisEarlyVersion](https://github.com/morgana-x/SCP-Exiled-Tardis/assets/89588301/b6cc1f29-b1b7-4f81-822e-1d2292fbb931)
+![tardisEarlyVersion](https://github.com/morgana-x/SCP-Exiled-Tardis/assets/89588301/f8d37de6-ae41-478f-9964-fc397b431d3c)
+
 Exiled plugin that adds the tardis from doctor who
 
 
