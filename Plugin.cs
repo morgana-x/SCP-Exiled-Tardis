@@ -1,4 +1,6 @@
 ﻿using Exiled.API.Features;
+using System.Runtime.InteropServices;
+
 namespace TardisPlugin
 {
     public sealed class Plugin : Plugin<Config>
@@ -36,14 +38,17 @@ namespace TardisPlugin
             _handlers = new EventHandlers();
 
             Exiled.Events.Handlers.Map.Generated += _handlers.onMapGenerated;
-            Exiled.Events.Handlers.Player.Spawned += _handlers.OnPlayerSpawned;
+           // Exiled.Events.Handlers.Player.Spawned += _handlers.OnPlayerSpawned;
+            Exiled.Events.Handlers.Player.SearchingPickup += _handlers.OnPlayerPressInteract;
+        
 
         }
 
         private void UnregisterEvents()
         {
             Exiled.Events.Handlers.Map.Generated -= _handlers.onMapGenerated;
-            Exiled.Events.Handlers.Player.Spawned -= _handlers.OnPlayerSpawned;
+            //Exiled.Events.Handlers.Player.Spawned -= _handlers.OnPlayerSpawned;
+            Exiled.Events.Handlers.Player.SearchingPickup -= _handlers.OnPlayerPressInteract;
             _handlers = null;
         }
     }
