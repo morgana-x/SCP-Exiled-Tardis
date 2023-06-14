@@ -90,15 +90,15 @@ namespace TardisPlugin
             //policeBox_Cube.GetComponent<Renderer>().material.color = TardisExteriorColor;
 
             policeBox_Cube = Primitive.Create(PrimitiveType.Cube);
-            policeBox_Cube.Position = ExteriorPosition;
+            policeBox_Cube.Position = ExteriorPosition + (Vector3.up * 1.125f);
             policeBox_Cube.Color = TardisExteriorColor;
-            policeBox_Cube.Scale = new Vector3(1.5f, 4.5f, 1.5f);
+            policeBox_Cube.Scale = new Vector3(1.5f, 2.25f, 1.5f);
             policeBox_Cube.Collidable = true;
             policeBox_Cube.Spawn();
 
             float startHeight = 2.25f;
             policeBox_Cube2 = Primitive.Create(PrimitiveType.Cube);
-            policeBox_Cube2.Position = ExteriorPosition + (Vector3.up * (startHeight));
+            policeBox_Cube2.Position = ExteriorPosition  + (Vector3.up * (startHeight));
             policeBox_Cube2.Color = TardisExteriorColor;
             policeBox_Cube2.Scale = new Vector3(1.2f, 0.2f, 1.2f);
             policeBox_Cube2.Collidable = true;
@@ -112,21 +112,21 @@ namespace TardisPlugin
             policeBox_Cube2.Spawn();
 
             policeBox_Cube3 = Primitive.Create(PrimitiveType.Cube);
-            policeBox_Cube3.Position = ExteriorPosition + (Vector3.up * (startHeight + 0.2f));
+            policeBox_Cube3.Position = ExteriorPosition  + (Vector3.up * (startHeight + 0.2f));
             policeBox_Cube3.Color = TardisExteriorColor;
             policeBox_Cube3.Scale = new Vector3(0.5f, 0.1f, 0.5f);
             policeBox_Cube3.Collidable = false;
             policeBox_Cube3.Spawn();
 
             policeBox_Cube4 = Primitive.Create(PrimitiveType.Cube);
-            policeBox_Cube4.Position = ExteriorPosition + (Vector3.up * (startHeight + 0.2f + 0.1f));
+            policeBox_Cube4.Position = ExteriorPosition  + (Vector3.up * (startHeight + 0.2f + 0.1f));
             policeBox_Cube4.Color = TardisExteriorColor;
             policeBox_Cube4.Scale = new Vector3(0.4f, 0.25f, 0.4f);
             policeBox_Cube4.Collidable = false;
             policeBox_Cube4.Spawn();
 
             policeBox_CubeLight = Primitive.Create(PrimitiveType.Cube);
-            policeBox_CubeLight.Position = ExteriorPosition + (Vector3.up * (startHeight + 0.2f + 0.1f + 0.2f));
+            policeBox_CubeLight.Position = ExteriorPosition  + (Vector3.up * (startHeight + 0.2f + 0.1f + 0.2f));
             policeBox_CubeLight.Color = Color.white;
             policeBox_CubeLight.Scale = new Vector3(0.25f, 0.1f, 0.25f);
             policeBox_CubeLight.Collidable = false;
@@ -150,8 +150,8 @@ namespace TardisPlugin
             float forwardOffset = 0.75f;
 
             policeBox_Door = Primitive.Create(PrimitiveType.Cube);
-            policeBox_Door.Position = ExteriorPosition + new Vector3(0, 0, forwardOffset);
-            policeBox_Door.Scale = new Vector3(1f, 4f, 0.1f);
+            policeBox_Door.Position = ExteriorPosition + (Vector3.up * 1) + new Vector3(0, 0, forwardOffset);
+            policeBox_Door.Scale = new Vector3(1f, 2f, 0.1f);
             policeBox_Door.Color = Color.black;
             policeBox_Door.Collidable = false;
             policeBox_Door.Spawn();
@@ -273,10 +273,8 @@ namespace TardisPlugin
 
             Color TardisExteriorColor = Color.blue;
 
-            policeBox_Cube.Position = ExteriorPosition;
+            policeBox_Cube.Position = ExteriorPosition + (Vector3.up * 1.125f);
             policeBox_Cube.Color = TardisExteriorColor;
-            policeBox_Cube.Scale = new Vector3(1.5f, 4.5f, 1.5f);
-            policeBox_Cube.Collidable = true;
             policeBox_Cube.Spawn();
 
             float startHeight = 2.25f;
@@ -292,7 +290,7 @@ namespace TardisPlugin
             policeBox_Cube3.Color = TardisExteriorColor;
             policeBox_Cube3.Spawn();
 
-            policeBox_Cube4.Position = ExteriorPosition + (Vector3.up * (startHeight + 0.2f + 0.1f));
+            policeBox_Cube4.Position = ExteriorPosition  + (Vector3.up * (startHeight + 0.2f + 0.1f));
             policeBox_Cube4.Color = TardisExteriorColor;
             policeBox_Cube4.Spawn();
 
@@ -300,7 +298,7 @@ namespace TardisPlugin
             policeBox_CubeLight.Color = Color.white;
             policeBox_CubeLight.Spawn();
 
-            policeBox_CubeTop.Position = ExteriorPosition + (Vector3.up * (startHeight + 0.2f + 0.1f + 0.2f + 0.1f));
+            policeBox_CubeTop.Position = ExteriorPosition  + (Vector3.up * (startHeight + 0.2f + 0.1f + 0.2f + 0.1f));
             policeBox_CubeTop.Color = Color.blue;
             policeBox_CubeTop.Spawn();
 
@@ -308,12 +306,12 @@ namespace TardisPlugin
             policeBox_Light.LightShadows = true;
             policeBox_Light.LightIntensity = 1;
             policeBox_Light.LightRange = 2;
-            policeBox_Light.Position = ExteriorPosition + (Vector3.up * 5f);
+            policeBox_Light.Position = ExteriorPosition  + (Vector3.up * 5f);
             //  policeBox_Light.enabled = true;
 
             float forwardOffset = 0.75f;
 
-            policeBox_Door.Position = ExteriorPosition + new Vector3(0, 0, forwardOffset);
+            policeBox_Door.Position = ExteriorPosition + (Vector3.up * 1.125f) + new Vector3(0, 0, forwardOffset);
             policeBox_Door.Color = Color.black;
             policeBox_Door.Spawn();
 
@@ -323,36 +321,38 @@ namespace TardisPlugin
 
             float windowScaleFactor = 1.5f;
 
-            policeBox_Window_Front_1.Position = ExteriorPosition + (new Vector3(-windowWidth / 2, 0, forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            Vector3 ExteriorPositionWindow = (ExteriorPosition) + (Vector3.up * 0.25f);
+
+            policeBox_Window_Front_1.Position = ExteriorPositionWindow + (new Vector3(-windowWidth / 2, 0, forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Front_1.Color = Color.white;
             policeBox_Window_Front_1.Spawn();
 
-            policeBox_Window_Front_2.Position = ExteriorPosition + (new Vector3(windowWidth / 2, 0, forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            policeBox_Window_Front_2.Position = ExteriorPositionWindow + (new Vector3(windowWidth / 2, 0, forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Front_2.Color = Color.white;
             policeBox_Window_Front_2.Spawn();
 
-            policeBox_Window_Back_1.Position = ExteriorPosition + (new Vector3(-windowWidth / 2, 0, -forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            policeBox_Window_Back_1.Position = ExteriorPositionWindow + (new Vector3(-windowWidth / 2, 0, -forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Back_1.Color = Color.white;
             policeBox_Window_Back_1.Spawn();
 
-            policeBox_Window_Back_2.Position = ExteriorPosition + (new Vector3(windowWidth / 2, 0, -forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            policeBox_Window_Back_2.Position = ExteriorPositionWindow + (new Vector3(windowWidth / 2, 0, -forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Back_2.Color = Color.white;
             policeBox_Window_Back_2.Spawn();
 
 
-            policeBox_Window_Left_1.Position = ExteriorPosition + (new Vector3(-0.8f, 0, -windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            policeBox_Window_Left_1.Position = ExteriorPositionWindow + (new Vector3(-0.8f, 0, -windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Left_1.Color = Color.white;
-            policeBox_Window_Left_1.Spawn();
+            policeBox_Window_Left_1.Spawn();    
 
-            policeBox_Window_Left_2.Position = ExteriorPosition + (new Vector3(-0.8f, 0, windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            policeBox_Window_Left_2.Position = ExteriorPositionWindow + (new Vector3(-0.8f, 0, windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Left_2.Color = Color.white;
             policeBox_Window_Left_2.Spawn();
 
-            policeBox_Window_Right_1.Position = ExteriorPosition + (new Vector3(0.8f, 0, -windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            policeBox_Window_Right_1.Position = ExteriorPositionWindow + (new Vector3(0.8f, 0, -windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Right_1.Color = Color.white;
             policeBox_Window_Right_1.Spawn();
 
-            policeBox_Window_Right_2.Position = ExteriorPosition + (new Vector3(0.8f, 0, windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
+            policeBox_Window_Right_2.Position = ExteriorPositionWindow + (new Vector3(0.8f, 0, windowWidth / 2)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Right_2.Color = Color.white;
             policeBox_Window_Right_2.Spawn();
 
