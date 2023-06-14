@@ -4,21 +4,17 @@
 
 Exiled plugin that adds the tardis from doctor who
 
-
 Work in progress, for exiled 7.0.0
 
 Currently can only exit and reenter the tardis with very basic stuff, interior is just one of those towers admins use currently
 
-All players will also teleport to the tardis on spawn for debug purposes, this is not meant to actually be used on a server yet
 
 Planned features:
 
-Move the tardis to different locations
+Better navigation gameplay, so far it's just guess the button
 
 Proper fading effect
 
-Game balance maybe
+Game balance maybe (Currently just have a cooldown on teleporting and a check to see if a player is obstructing where its going)
 
 Config for who can enter tardis (Maybe a door locking system so its a viable escape from scps!)
-
-(Hopefully all this can be done from the central console thingy in the interior of the tardis with buttons some which way)
