@@ -38,17 +38,17 @@ namespace TardisPlugin
             _handlers = new EventHandlers();
 
             Exiled.Events.Handlers.Map.Generated += _handlers.onMapGenerated;
-           // Exiled.Events.Handlers.Player.Spawned += _handlers.OnPlayerSpawned;
             Exiled.Events.Handlers.Player.SearchingPickup += _handlers.OnPlayerPressInteract;
-        
-
+            Exiled.Events.Handlers.Map.Decontaminating += _handlers.OnDecontaminating;
+            Exiled.Events.Handlers.Warhead.Detonated += _handlers.OnWarhead;
         }
 
         private void UnregisterEvents()
         {
             Exiled.Events.Handlers.Map.Generated -= _handlers.onMapGenerated;
-            //Exiled.Events.Handlers.Player.Spawned -= _handlers.OnPlayerSpawned;
             Exiled.Events.Handlers.Player.SearchingPickup -= _handlers.OnPlayerPressInteract;
+            Exiled.Events.Handlers.Map.Decontaminating -= _handlers.OnDecontaminating;
+            Exiled.Events.Handlers.Warhead.Detonated -= _handlers.OnWarhead;
             _handlers = null;
         }
     }

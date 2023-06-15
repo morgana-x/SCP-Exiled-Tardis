@@ -54,8 +54,8 @@ namespace TardisPlugin
         Primitive policeBox_Window_Right_1;
         Primitive policeBox_Window_Right_2;
 
-        Room SelectedRoomDestination;
-        Room CurrentRoom;
+        Room SelectedRoomDestination = null;
+        public Room CurrentRoom;
         bool IsSelectedRoomDestination = false;
         double lastTardisTeleport = 0;
         public IDictionary<Pickup, string> ButtonLocations = new Dictionary<Pickup, string>();
@@ -222,8 +222,8 @@ namespace TardisPlugin
             TardisExteriorDoorPosition = policeBox_Door.Position + new Vector3(0, 0, 1.52f) + (Vector3.up * 0.2f);
             shipInterior_Door = Primitive.Create(PrimitiveType.Cube);
             shipInterior_Door.Color = Color.black;
-            shipInterior_Door.Scale = new Vector3(0.2f, 4f, 1f);
-            shipInterior_Door.Position = new Vector3(42.50f, 1014.11f, -32.168f);
+            shipInterior_Door.Scale = new Vector3(0.2f, 2f, 1f);
+            shipInterior_Door.Position = new Vector3(42.50f, 1014.11f +1f, -32.168f);
             shipInterior_Door.Collidable = false;
             shipInterior_Door.Spawn();
 
@@ -251,22 +251,29 @@ namespace TardisPlugin
 
             Vector3 ConsoleSurfaceLevel_MedKit = TardisInteriorPosition + (Vector3.up * 0.51f) + (Vector3.down * 0.5f);
             Vector3 ConsoleSurfaceLevel_Coin = TardisInteriorPosition + (Vector3.up * 0.55f) + (Vector3.down * 0.5f);
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0f), ItemType.SCP2176, "teleport_gateB");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0.1f), ItemType.SCP2176, "teleport_gateA");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0.2f), ItemType.SCP2176, "random_move_surface");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0.3f), ItemType.SCP2176, "teleport_DClassSpawn");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0.4f), ItemType.SCP2176, "teleport_nuke");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0.5f), ItemType.SCP2176, "teleport_Larry");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0.6f), ItemType.SCP2176, "teleport_elevatorHCZA");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.6f), ItemType.SCP2176, "teleport_elevatorHCZB");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.5f), ItemType.SCP2176, "teleport_glassbox");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.4f), ItemType.SCP2176, "teleport_micro");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.3f), ItemType.SCP2176, "teleport_914");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.2f), ItemType.SCP2176, "teleport_Peanut");
-            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.1f), ItemType.SCP2176, "teleport_pocket");
+
+            // FRONT, NAVIGATION STUFF
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, 0f), ItemType.SCP2176, "teleport_gateB");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, 0.1f), ItemType.SCP2176, "teleport_gateA");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, 0.2f), ItemType.SCP2176, "random_move_surface");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, 0.3f), ItemType.SCP2176, "teleport_DClassSpawn");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, 0.4f), ItemType.SCP2176, "teleport_nuke");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, 0.5f), ItemType.SCP2176, "teleport_Larry");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, 0.6f), ItemType.SCP2176, "teleport_elevatorHCZA");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, -0.6f), ItemType.SCP2176, "teleport_elevatorHCZB");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, -0.5f), ItemType.SCP2176, "teleport_glassbox");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, -0.4f), ItemType.SCP2176, "teleport_micro");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, -0.3f), ItemType.SCP2176, "teleport_914");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, -0.2f), ItemType.SCP2176, "teleport_Peanut");
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.3f, 0f, -0.1f), ItemType.SCP2176, "teleport_pocket");
+
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, 0f), ItemType.SCP018, "activate_teleport");
 
 
-          //  AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.1f), ItemType.SCP2176, "teleport_49");
+            // RIGHT, SCANNING / OTHER UTILITIES
+
+            AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0f, 0f, 0.5f), ItemType.Medkit, "scan_facility_scp");
+            //  AddButton(ConsoleSurfaceLevel_Coin + new Vector3(0.5f, 0f, -0.1f), ItemType.SCP2176, "teleport_49");
         }
         public void moveTardisModel(Vector3 ExteriorPosition)
         {
@@ -307,6 +314,7 @@ namespace TardisPlugin
             policeBox_Light.LightIntensity = 1;
             policeBox_Light.LightRange = 2;
             policeBox_Light.Position = ExteriorPosition  + (Vector3.up * 5f);
+       
             //  policeBox_Light.enabled = true;
 
             float forwardOffset = 0.75f;
@@ -321,7 +329,7 @@ namespace TardisPlugin
 
             float windowScaleFactor = 1.5f;
 
-            Vector3 ExteriorPositionWindow = (ExteriorPosition) + (Vector3.up * 0.25f);
+            Vector3 ExteriorPositionWindow = ExteriorPosition + (Vector3.up * 0.25f);
 
             policeBox_Window_Front_1.Position = ExteriorPositionWindow + (new Vector3(-windowWidth / 2, 0, forwardOffset)) + (Vector3.up * (2.25f - 0.2f - windowHeight));
             policeBox_Window_Front_1.Color = Color.white;
@@ -401,11 +409,27 @@ namespace TardisPlugin
             CurrentRoom = TardisRoom;
         }
 
+        public void SelectRoomViaPlayer(Tardis tardis, Room TardisRoom, Player player)
+        {
+          
+            SelectedRoomDestination = TardisRoom;
+            player.ShowHint("Selected " + TardisRoom.Name);
+        }
         public void GotoRoomViaPlayer(Tardis tardis, Room TardisRoom, Player player)
         {
             if (CurrentRoom == TardisRoom)
             {
                 player.ShowHint("You are already at this destination", 5f);
+                return;
+            }
+            if ((TardisRoom.Zone == ZoneType.LightContainment) && Exiled.API.Features.Map.IsLczDecontaminated)
+            {
+                player.ShowHint("ABORTING, Volatile Gas Detected at " + TardisRoom.RoomName, 5f);
+                return;
+            }
+            if ( (TardisRoom.Zone != ZoneType.Surface) && Exiled.API.Features.Warhead.IsDetonated)
+            {
+                player.ShowHint("ABORTING, Excess Radiation detected at " + TardisRoom.RoomName, 5f);
                 return;
             }
             if (lastTardisTeleport > Round.ElapsedTime.TotalSeconds)
@@ -427,6 +451,7 @@ namespace TardisPlugin
             player.ShowHint("Moving to " + TardisRoom.Name);
             tardis.moveTardisModel(TardisRoom.Position);
             // tardis.rotateTardisDoor(TardisRoom);
+            SelectedRoomDestination = null;
             CurrentRoom = TardisRoom;
             lastTardisTeleport = Round.ElapsedTime.TotalSeconds + 15;
         }
@@ -438,91 +463,109 @@ namespace TardisPlugin
                 List<Room> RoomList = Exiled.API.Features.Room.List.ToList();
                 int r = rnd.Next(RoomList.Count);
                 Room TardisRoom = RoomList[r];
-                GotoRoomViaPlayer(tardis, TardisRoom,pl);
+                SelectRoomViaPlayer(tardis, TardisRoom,pl);
             }
             if (id == "random_move_heavy")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Random(ZoneType.HeavyContainment);
-                GotoRoomViaPlayer(tardis, TardisRoom,pl);
+                SelectRoomViaPlayer(tardis, TardisRoom,pl);
             }
             if (id == "random_move_light")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Random(ZoneType.LightContainment);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "random_move_entrance")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Random(ZoneType.Entrance);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "random_move_surface")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Random(ZoneType.Surface);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_pocket")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.Pocket);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_914")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.Lcz914);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_micro")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.HczHid);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_nuke")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.HczNuke);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
 
             if (id == "teleport_gateB")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.EzGateB);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_gateA")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.EzGateA);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_DClassSpawn")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.LczClassDSpawn);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_Peanut")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.HczServers);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_Larry")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.Hcz106);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_elevatorHCZA")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.HczElevatorA);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_elevatorHCZB")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.HczElevatorB);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
             }
             if (id == "teleport_glassbox")
             {
                 Room TardisRoom = Exiled.API.Features.Room.Get(RoomType.LczGlassBox);
-                GotoRoomViaPlayer(tardis, TardisRoom, pl);
+                SelectRoomViaPlayer(tardis, TardisRoom, pl);
+            }
+            if (id == "scan_facility_scp")
+            {
+                int numSCPS = Exiled.API.Features.Round.SurvivingSCPs;
+                pl.ShowHint( numSCPS.ToString() + " Anomolous Sentient Life Forms Detected", 5f);
+            }
+            if (id == "scan_facility_mtf")
+            {
+          
+            }
+            if (id == "activate_teleport")
+            {
+                if (SelectedRoomDestination==null)
+                {
+                    pl.ShowHint("No destination selected!", 5f);                    
+                    return;
+                }
+                GotoRoomViaPlayer(tardis, SelectedRoomDestination, pl);
             }
         }
-        public void ProcessButtons(Tardis tardis, Player pl, Pickup pickup)
+        public bool ProcessButtons(Tardis tardis, Player pl, Pickup pickup)
         {
             //Log.Info("Start check");
             foreach (KeyValuePair<Pickup, string> buttonObj in ButtonLocations)
@@ -530,8 +573,9 @@ namespace TardisPlugin
                 if ( buttonObj.Key != pickup   )   
                     continue;
                 ProcessButtonCommand(tardis, pl, buttonObj.Value);
-                break;
+                return true;
             }
+            return false;
         }
    
     }

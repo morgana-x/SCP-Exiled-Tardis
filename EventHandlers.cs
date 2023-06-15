@@ -28,7 +28,7 @@ namespace TardisPlugin
         };
         public void onMapGenerated()
         {
-            //Log.Info("Spawning tardis!");
+            Log.Info("Spawning tardis!");
             RoomType TardisRoomType = StartRoomPool.RandomItem();
             Room TardisRoom = Room.Get(TardisRoomType);
             _Tardis.spawnTardisModel(TardisRoom.Position, new Vector3(24, 991, -40));
@@ -44,21 +44,26 @@ namespace TardisPlugin
 
         public void OnPlayerPressInteract(Exiled.Events.EventArgs.Player.SearchingPickupEventArgs ev)
         {
-           // Log.Info("Player pressed E");
-            //ev.Player.ShowHint("Pressed E");
-
-            _Tardis.ProcessButtons(_Tardis, ev.Player, ev.Pickup);
-            ev.IsAllowed = false;
-
-            /*RaycastHit hit;
-            Transform transform = ev.Player.CameraTransform;
-            int layerMask = 1 << 8;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20f, layerMask))
+            bool isButton = _Tardis.ProcessButtons(_Tardis, ev.Player, ev.Pickup);
+            if (isButton)
             {
-                Log.Info("Player ray cast hit something");
-                _Tardis.ProcessButtons(_Tardis, ev.Player, hit.transform);
-            }*/
+                ev.IsAllowed = false;
+            }
+        }
+        public void OnDecontaminating(Exiled.Events.EventArgs.Map.DecontaminatingEventArgs ev)
+        {
+            if (_Tardis.CurrentRoom.Zone == ZoneType.LightContainment)
+            {
+                _Tardis.GotoRoom(_Tardis, Room.Get(RoomType.Hcz106));
+            }
         }
 
+        public void OnWarhead()
+        {
+            if (_Tardis.CurrentRoom.Zone != ZoneType.Surface)
+            {
+                _Tardis.GotoRoom(_Tardis, Room.Get(RoomType.Surface));
+            }
+        }
     }
 }
