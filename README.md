@@ -1,10 +1,8 @@
 # SCP-Exiled-Tardis
+Exiled plugin that adds the tardis from doctor who
 ![tardisEarlyVersion](https://github.com/morgana-x/SCP-Exiled-Tardis/assets/89588301/f8d37de6-ae41-478f-9964-fc397b431d3c)
-![Screenshot (3962)](https://github.com/morgana-x/SCP-Exiled-Tardis/assets/89588301/b93dea46-9144-4509-805b-960e607aec18)
 
-# Exiled plugin that adds the tardis from doctor who
-
-# Work in progress, for exiled 7.0.0
+# Work in progress
 
 Currently can only exit and reenter the tardis with very basic stuff, interior is just one of those towers admins use currently
 
